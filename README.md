@@ -54,7 +54,7 @@ TradeFlow/
 
 ### Phase 1 — Java Fundamentals
 
-- [x] Classes & Objects
+- [ ] Classes & Objects
 - [ ] Constructors
 - [ ] Methods
 - [ ] Encapsulation
