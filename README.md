@@ -1,25 +1,29 @@
 # TradeFlow
 
-A Java-based stock trading simulation project developed to learn Java, Object-Oriented Programming (OOP), and software engineering principles by building a real-world application from scratch.
+TradeFlow is a Java-based stock trading simulation application that models the core functionalities of a modern trading platform. It is being developed using object-oriented design principles with a focus on clean architecture, scalability, and maintainable code.
 
-This project follows an incremental development approach where every feature is designed, implemented, reviewed, and refactored before moving to the next milestone.
-
----
-
-## Overview
-
-TradeFlow simulates the core functionalities of a stock trading platform. The project is being built as a learning journey, gradually introducing Java concepts while following industry-standard development practices.
+The project begins as a console application and will progressively evolve into a complete backend-driven trading system featuring portfolio management, transaction processing, authentication, database integration, and REST APIs.
 
 ---
 
-## Objectives
+## Features
 
-- Learn Java fundamentals
-- Master Object-Oriented Programming
-- Write clean and maintainable code
-- Practice software design principles
-- Build a complete trading application
-- Learn Git and GitHub workflows
+### Implemented
+- User Management
+- Wallet Management
+
+### Planned
+- Stock Management
+- Portfolio Management
+- Buy & Sell Orders
+- Transaction History
+- Watchlist
+- Trading Engine
+- Market Simulation
+- File Persistence
+- Database Integration
+- Authentication & Authorization
+- REST API (Spring Boot)
 
 ---
 
@@ -27,136 +31,140 @@ TradeFlow simulates the core functionalities of a stock trading platform. The pr
 
 | Technology | Purpose |
 |------------|---------|
-| Java | Programming Language |
-| IntelliJ IDEA | IDE |
+| Java | Core Programming Language |
+| IntelliJ IDEA | Development Environment |
 | Git | Version Control |
-| GitHub | Source Code Management |
+| GitHub | Repository Hosting |
 
 ---
 
 ## Project Structure
 
-```
+```text
 TradeFlow/
 │
 ├── src/
-│   └── com.aaryapatkarworks.tradeflow/
-│       ├── Main.java
-│       └── User.java
+│   └── com/
+│       └── aaryapatkarworks/
+│           └── tradeflow/
+│               ├── Main.java
+│               │
+│               ├── model/
+│               │   ├── User.java
+│               │   ├── Stock.java
+│               │   ├── Portfolio.java
+│               │   ├── Transaction.java
+│               │   └── Wallet.java
+│               │
+│               ├── service/
+│               │   ├── UserService.java
+│               │   ├── TradingService.java
+│               │   ├── PortfolioService.java
+│               │   └── WalletService.java
+│               │
+│               ├── repository/
+│               │   └── DataStore.java
+│               │
+│               ├── util/
+│               │   ├── Constants.java
+│               │   ├── InputValidator.java
+│               │   └── ConsoleHelper.java
+│               │
+│               └── exception/
+│                   ├── InsufficientBalanceException.java
+│                   └── StockNotFoundException.java
+│
+├── docs/
+│   ├── DESIGN.md
+│   ├── REQUIREMENTS.md
+│   └── UML/
+│
+├── screenshots/
 │
 ├── .gitignore
+├── LICENSE
 └── README.md
 ```
 
+> **Note:** The project structure above represents the intended architecture. Some directories and files will be introduced as development progresses.
+
 ---
 
-## Learning Roadmap
+## Getting Started
 
-### Phase 1 — Java Fundamentals
+### Prerequisites
 
-- [ ] Classes & Objects
-- [ ] Constructors
-- [ ] Methods
-- [ ] Encapsulation
-- [ ] Arrays
-- [ ] ArrayList
-- [ ] Exception Handling
+- Java JDK 21 or higher
+- IntelliJ IDEA (Recommended)
+- Git
 
-### Phase 2 — Object-Oriented Programming
+### Clone the Repository
 
-- [ ] Inheritance
-- [ ] Polymorphism
-- [ ] Abstraction
-- [ ] Interfaces
+```bash
+git clone https://github.com/aaryapatkarworks/TradeFlow.git
+```
 
-### Phase 3 — Trading System
+### Navigate to the Project
 
-- [ ] User Management
-- [ ] Wallet Management
-- [ ] Stock Model
-- [ ] Portfolio
-- [ ] Buy Stocks
-- [ ] Sell Stocks
-- [ ] Transaction History
+```bash
+cd TradeFlow
+```
 
-### Phase 4 — Advanced Java
+### Run
 
-- [ ] Collections Framework
-- [ ] File Handling
-- [ ] Custom Exceptions
-- [ ] Data Persistence
-
-### Phase 5 — Future Enhancements
-
-- [ ] Database Integration
-- [ ] Spring Boot REST API
-- [ ] Authentication
-- [ ] Web Frontend
-- [ ] Real-Time Market Simulation
+Open the project in IntelliJ IDEA and run `Main.java`.
 
 ---
 
 ## Development Workflow
 
-Every feature follows the same development process:
+Every feature follows a structured development process:
 
-```
+```text
 Design
-    ↓
+   ↓
 Implement
-    ↓
+   ↓
 Code Review
-    ↓
+   ↓
 Refactor
-    ↓
+   ↓
 Git Commit
 ```
 
 ---
 
-## Current Progress
+## Project Status
 
-### Sprint 1
+The project is currently under active development.
 
-**Status:** In Progress
-
-Completed:
-- Project setup
-- Git & GitHub integration
-- Package structure
-
-Currently Working On:
-- User model
-- Object creation
-- Display user information
-
----
-
-## Git Commit Convention
-
-This project follows conventional commit messages.
-
-Examples:
-
-```
-feat: add User model
-fix: correct wallet calculation
-refactor: simplify display method
-docs: update README
-```
+The current focus is building the application's core domain model before implementing the trading engine and advanced features.
 
 ---
 
 ## Future Scope
 
-TradeFlow will continue evolving into a complete trading simulation by introducing advanced Java concepts, backend development with Spring Boot, database integration, and additional features inspired by real-world trading platforms.
+- Console-based Trading Platform
+- Spring Boot REST API
+- MySQL Database Integration
+- User Authentication
+- Real-Time Market Simulation
+- Interactive Dashboard
+- Web-Based User Interface
+
+---
+
+## Contributing
+
+This is currently a personal portfolio project. Suggestions, feedback, and improvements are always welcome.
 
 ---
 
 ## Author
+
 **Aarya Patkar**
 ---
 
 ## License
 
-This project is intended for learning and educational purposes.
+This project is licensed under the MIT License.
