@@ -20,6 +20,27 @@ public class Main {
                 100000
         );
 
+        Stock stock1 = new Stock(
+                1,
+                "Tata Consultancy Services",
+                "TCS",
+                3520.50
+        );
+
+        Stock stock2 = new Stock(
+                2,
+                "Reliance Industries",
+                "RELIANCE",
+                1498.75
+        );
+
+        Stock stock3 = new Stock(
+                3,
+                "Infosys",
+                "INFY",
+                1624.80
+        );
+
         System.out.println("========== INITIAL USER DETAILS ==========\n");
 
         user1.displayUser();
@@ -39,5 +60,16 @@ public class Main {
         System.out.println();
 
         user2.displayUser();
+
+        System.out.println("\n========== AVAILABLE STOCKS ==========\n");
+
+        stock1.displayStock();
+        System.out.println();
+
+        stock2.displayStock();
+        System.out.println();
+
+        stock3.displayStock();
+
     }
 }
