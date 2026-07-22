@@ -41,20 +41,7 @@ public class Main {
                 1624.80
         );
 
-        System.out.println("========== INITIAL USER DETAILS ==========\n");
-
-        user1.displayUser();
-        System.out.println();
-
-        user2.displayUser();
-
-        System.out.println("\n========== WALLET OPERATIONS ==========\n");
-
-        user1.deposit(25700);
-        user2.withdraw(15200);
-        user1.withdraw(3090);
-
-        System.out.println("\n========== UPDATED USER DETAILS ==========\n");
+        System.out.println("========== USERS ==========\n");
 
         user1.displayUser();
         System.out.println();
@@ -71,7 +58,12 @@ public class Main {
 
         stock3.displayStock();
 
-        System.out.println("\n========== BUY STOCK ==========\n");
+        System.out.println("\n========== WALLET OPERATIONS ==========\n");
+
+        user2.deposit(90000);
+        user1.withdraw(10500);
+
+        System.out.println("\n========== BUY ORDERS ==========");
 
         user1.buyStock(stock1, 10);
 
@@ -79,14 +71,11 @@ public class Main {
 
         user2.buyStock(stock2, 80);
 
-        System.out.println();
-
-        System.out.println("========== FINAL USER DETAILS ==========\n");
+        System.out.println("\n========== FINAL USER DETAILS ==========\n");
 
         user1.displayUser();
         System.out.println();
 
         user2.displayUser();
-
     }
 }

@@ -35,7 +35,7 @@ public class User {
 
         walletBalance += amount;
 
-        System.out.printf("₹%.2f deposited successfully into %s's wallet.%n",
+        System.out.printf("₹%.2f deposited into %s's wallet.%n",
                 amount, fullName);
     }
 
@@ -45,13 +45,12 @@ public class User {
 
             walletBalance -= amount;
 
-            System.out.printf("₹%.2f withdrawn successfully from %s's wallet.%n",
+            System.out.printf("₹%.2f withdrawn from %s's wallet.%n",
                     amount, fullName);
 
         } else {
 
-            System.out.printf("Withdrawal failed! %s has insufficient wallet balance.%n",
-                    fullName);
+            System.out.println("Insufficient Wallet Balance.");
         }
     }
 
@@ -65,14 +64,16 @@ public class User {
         System.out.println("Stock     : " + stock.companyName);
         System.out.println("Symbol    : " + stock.stockSymbol);
         System.out.println("Quantity  : " + quantity);
-        System.out.printf("Total Cost: ₹%.2f%n", totalCost);
+
+        System.out.printf("Price     : ₹%.2f%n", stock.currentPrice);
+        System.out.printf("Total     : ₹%.2f%n", totalCost);
 
         if (walletBalance >= totalCost) {
 
             walletBalance -= totalCost;
 
             System.out.println("\nOrder Status : SUCCESS");
-            System.out.printf("Remaining Wallet Balance : ₹%.2f%n", walletBalance);
+            System.out.printf("Remaining Wallet : ₹%.2f%n", walletBalance);
 
         } else {
 
@@ -82,5 +83,4 @@ public class User {
 
         System.out.println("===============================");
     }
-
 }
