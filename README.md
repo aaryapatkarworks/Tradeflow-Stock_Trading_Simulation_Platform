@@ -163,8 +163,4 @@ This is currently a personal portfolio project. Suggestions, feedback, and impro
 ## Author
 
 **Aarya Patkar**
----
 
-## License
-
-This project is licensed under the MIT License.
