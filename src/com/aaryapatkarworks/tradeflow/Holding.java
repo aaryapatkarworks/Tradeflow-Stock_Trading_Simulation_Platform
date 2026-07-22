@@ -13,6 +13,17 @@ public class Holding {
         this.averagePrice = averagePrice;
     }
 
+    void addQuantity(int newQuantity, double newPrice) {
+
+        double totalInvestment =
+                (quantity * averagePrice) +
+                        (newQuantity * newPrice);
+
+        quantity += newQuantity;
+
+        averagePrice = totalInvestment / quantity;
+    }
+
     void displayHolding() {
 
         System.out.println("Stock      : " + stock.companyName);

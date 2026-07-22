@@ -66,6 +66,7 @@ public class Main {
         System.out.println("\n========== BUY ORDERS ==========");
 
         user1.buyStock(stock1, 10);
+        user1.buyStock(stock1,5);
 
         System.out.println();
 

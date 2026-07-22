@@ -11,11 +11,29 @@ public class Portfolio {
         holdings = new ArrayList<>();
     }
 
-    void addHolding(Holding holding) {
+    void addHolding(Stock stock, int quantity) {
 
-        holdings.add(holding);
+        for (Holding holding : holdings) {
 
-        System.out.println("Holding added to Portfolio.");
+            if (holding.stock.stockSymbol.equals(stock.stockSymbol)) {
+
+                holding.addQuantity(quantity, stock.currentPrice);
+
+                System.out.println("Existing holding updated.");
+
+                return;
+            }
+        }
+
+        holdings.add(
+                new Holding(
+                        stock,
+                        quantity,
+                        stock.currentPrice
+                )
+        );
+
+        System.out.println("New holding added to portfolio.");
     }
 
     void displayPortfolio() {

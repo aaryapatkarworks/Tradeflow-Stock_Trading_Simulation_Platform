@@ -75,13 +75,7 @@ public class User {
 
             walletBalance -= totalCost;
 
-            Holding holding = new Holding(
-                    stock,
-                    quantity,
-                    stock.currentPrice
-            );
-
-            portfolio.addHolding(holding);
+            portfolio.addHolding(stock, quantity);
 
             System.out.println("\nOrder Status : SUCCESS");
             System.out.printf("Remaining Wallet : ₹%.2f%n", walletBalance);
