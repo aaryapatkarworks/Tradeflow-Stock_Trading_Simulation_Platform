@@ -8,6 +8,8 @@ public class User {
     String password;
     double walletBalance;
 
+    Portfolio portfolio;
+
     User(int userId,
          String fullName,
          String email,
@@ -19,6 +21,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.walletBalance = walletBalance;
+        this.portfolio = new Portfolio();
     }
 
     void displayUser() {
@@ -72,6 +75,14 @@ public class User {
 
             walletBalance -= totalCost;
 
+            Holding holding = new Holding(
+                    stock,
+                    quantity,
+                    stock.currentPrice
+            );
+
+            portfolio.addHolding(holding);
+
             System.out.println("\nOrder Status : SUCCESS");
             System.out.printf("Remaining Wallet : ₹%.2f%n", walletBalance);
 
@@ -82,5 +93,12 @@ public class User {
         }
 
         System.out.println("===============================");
+    }
+
+    void displayPortfolio() {
+
+        System.out.println("\nPortfolio of " + fullName);
+
+        portfolio.displayPortfolio();
     }
 }

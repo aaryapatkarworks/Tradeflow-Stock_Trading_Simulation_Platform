@@ -77,5 +77,13 @@ public class Main {
         System.out.println();
 
         user2.displayUser();
+
+        System.out.println("\n========== PORTFOLIOS ==========");
+
+        user1.displayPortfolio();
+
+        System.out.println();
+
+        user2.displayPortfolio();
     }
 }
