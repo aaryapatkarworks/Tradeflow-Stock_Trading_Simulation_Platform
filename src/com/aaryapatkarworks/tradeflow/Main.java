@@ -71,5 +71,22 @@ public class Main {
 
         stock3.displayStock();
 
+        System.out.println("\n========== BUY STOCK ==========\n");
+
+        user1.buyStock(stock1, 10);
+
+        System.out.println();
+
+        user2.buyStock(stock2, 80);
+
+        System.out.println();
+
+        System.out.println("========== FINAL USER DETAILS ==========\n");
+
+        user1.displayUser();
+        System.out.println();
+
+        user2.displayUser();
+
     }
 }

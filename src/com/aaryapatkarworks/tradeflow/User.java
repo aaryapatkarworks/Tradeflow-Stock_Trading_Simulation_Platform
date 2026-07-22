@@ -54,4 +54,33 @@ public class User {
                     fullName);
         }
     }
+
+    void buyStock(Stock stock, int quantity) {
+
+        double totalCost = stock.currentPrice * quantity;
+
+        System.out.println("\n========== BUY ORDER ==========");
+
+        System.out.println("User      : " + fullName);
+        System.out.println("Stock     : " + stock.companyName);
+        System.out.println("Symbol    : " + stock.stockSymbol);
+        System.out.println("Quantity  : " + quantity);
+        System.out.printf("Total Cost: ₹%.2f%n", totalCost);
+
+        if (walletBalance >= totalCost) {
+
+            walletBalance -= totalCost;
+
+            System.out.println("\nOrder Status : SUCCESS");
+            System.out.printf("Remaining Wallet Balance : ₹%.2f%n", walletBalance);
+
+        } else {
+
+            System.out.println("\nOrder Status : FAILED");
+            System.out.println("Reason : Insufficient Wallet Balance");
+        }
+
+        System.out.println("===============================");
+    }
+
 }
