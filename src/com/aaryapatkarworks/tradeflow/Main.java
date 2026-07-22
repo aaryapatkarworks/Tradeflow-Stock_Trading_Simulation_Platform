@@ -20,8 +20,24 @@ public class Main {
                 100000
         );
 
+        System.out.println("========== INITIAL USER DETAILS ==========\n");
+
         user1.displayUser();
         System.out.println();
+
+        user2.displayUser();
+
+        System.out.println("\n========== WALLET OPERATIONS ==========\n");
+
+        user1.deposit(25700);
+        user2.withdraw(15200);
+        user1.withdraw(3090);
+
+        System.out.println("\n========== UPDATED USER DETAILS ==========\n");
+
+        user1.displayUser();
+        System.out.println();
+
         user2.displayUser();
     }
 }

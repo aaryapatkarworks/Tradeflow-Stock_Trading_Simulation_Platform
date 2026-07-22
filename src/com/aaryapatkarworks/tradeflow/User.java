@@ -28,5 +28,30 @@ public class User {
         System.out.println("Name    : " + fullName);
         System.out.println("Email   : " + email);
         System.out.printf("Wallet  : ₹%.2f%n", walletBalance);
+        System.out.println("==========================");
+    }
+
+    void deposit(double amount) {
+
+        walletBalance += amount;
+
+        System.out.printf("₹%.2f deposited successfully into %s's wallet.%n",
+                amount, fullName);
+    }
+
+    void withdraw(double amount) {
+
+        if (amount <= walletBalance) {
+
+            walletBalance -= amount;
+
+            System.out.printf("₹%.2f withdrawn successfully from %s's wallet.%n",
+                    amount, fullName);
+
+        } else {
+
+            System.out.printf("Withdrawal failed! %s has insufficient wallet balance.%n",
+                    fullName);
+        }
     }
 }
