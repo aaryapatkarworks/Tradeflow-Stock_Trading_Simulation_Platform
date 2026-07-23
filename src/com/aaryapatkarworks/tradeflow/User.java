@@ -1,4 +1,5 @@
 package com.aaryapatkarworks.tradeflow;
+import java.util.ArrayList;
 
 public class User {
 
@@ -9,6 +10,8 @@ public class User {
     double walletBalance;
 
     Portfolio portfolio;
+
+    ArrayList<Transaction> transactions;
 
     User(int userId,
          String fullName,
@@ -22,6 +25,7 @@ public class User {
         this.password = password;
         this.walletBalance = walletBalance;
         this.portfolio = new Portfolio();
+        transactions = new ArrayList<>();
     }
 
     void displayUser() {
@@ -77,6 +81,15 @@ public class User {
 
             portfolio.addHolding(stock, quantity);
 
+            transactions.add(
+                    new Transaction(
+                            "BUY",
+                            stock,
+                            quantity,
+                            stock.currentPrice
+                    )
+            );
+
             System.out.println("\nOrder Status : SUCCESS");
             System.out.printf("Remaining Wallet : ₹%.2f%n", walletBalance);
 
@@ -113,6 +126,15 @@ public class User {
 
         walletBalance += totalAmount;
 
+        transactions.add(
+                new Transaction(
+                        "SELL",
+                        stock,
+                        quantity,
+                        stock.currentPrice
+                )
+        );
+
         if (holding.isEmpty()) {
 
             portfolio.removeHolding(holding);
@@ -130,5 +152,21 @@ public class User {
         System.out.println("\nPortfolio of " + fullName);
 
         portfolio.displayPortfolio();
+    }
+
+    void displayTransactionHistory() {
+
+        System.out.println("\n========== TRANSACTION HISTORY ==========\n");
+
+        if (transactions.isEmpty()) {
+
+            System.out.println("No transactions available.");
+            return;
+        }
+
+        for (Transaction transaction : transactions) {
+
+            transaction.displayTransaction();
+        }
     }
 }

@@ -78,6 +78,14 @@ public class Main {
 
         user2.sellStock(stock2, 10);
 
+        System.out.println("\n========== USER 1 TRANSACTIONS ==========");
+
+        user1.displayTransactionHistory();
+
+        System.out.println("\n========== USER 2 TRANSACTIONS ==========");
+
+        user2.displayTransactionHistory();
+
         System.out.println("\n========== FINAL USER DETAILS ==========\n");
 
         user1.displayUser();
@@ -92,5 +100,7 @@ public class Main {
         System.out.println();
 
         user2.displayPortfolio();
+
+
     }
 }
