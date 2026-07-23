@@ -4,6 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
 
+        // Create Users
         User user1 = new User(
                 101,
                 "Aarya Patkar",
@@ -20,27 +21,32 @@ public class Main {
                 100000
         );
 
-        Stock stock1 = new Stock(
+        // Create Stock Market
+        StockMarket market = new StockMarket();
+
+        // Add Stocks to Market
+        market.addStock(new Stock(
                 1,
                 "Tata Consultancy Services",
                 "TCS",
                 3520.50
-        );
+        ));
 
-        Stock stock2 = new Stock(
+        market.addStock(new Stock(
                 2,
                 "Reliance Industries",
                 "RELIANCE",
                 1498.75
-        );
+        ));
 
-        Stock stock3 = new Stock(
+        market.addStock(new Stock(
                 3,
                 "Infosys",
                 "INFY",
                 1624.80
-        );
+        ));
 
+        // Display Users
         System.out.println("========== USERS ==========\n");
 
         user1.displayUser();
@@ -48,36 +54,31 @@ public class Main {
 
         user2.displayUser();
 
-        System.out.println("\n========== AVAILABLE STOCKS ==========\n");
+        // Display Stock Market
+        market.displayMarket();
 
-        stock1.displayStock();
-        System.out.println();
-
-        stock2.displayStock();
-        System.out.println();
-
-        stock3.displayStock();
-
+        // Wallet Operations
         System.out.println("\n========== WALLET OPERATIONS ==========\n");
 
         user2.deposit(90000);
         user1.withdraw(10500);
 
-        System.out.println("\n========== BUY ORDERS ==========");
+        // Buy Orders
+        System.out.println("\n========== BUY ORDERS ==========\n");
 
-        user1.buyStock(stock1, 10);
-        user1.buyStock(stock1,5);
+        user1.buyStock(market.findStock("TCS"), 10);
+        user1.buyStock(market.findStock("TCS"), 5);
 
-        System.out.println();
+        user2.buyStock(market.findStock("RELIANCE"), 80);
 
-        user2.buyStock(stock2, 80);
-
+        // Sell Orders
         System.out.println("\n========== SELL ORDERS ==========\n");
 
-        user1.sellStock(stock1, 3);
+        user1.sellStock(market.findStock("TCS"), 3);
 
-        user2.sellStock(stock2, 10);
+        user2.sellStock(market.findStock("RELIANCE"), 10);
 
+        // Final User Details
         System.out.println("\n========== FINAL USER DETAILS ==========\n");
 
         user1.displayUser();
@@ -85,6 +86,7 @@ public class Main {
 
         user2.displayUser();
 
+        // Dashboards
         System.out.println("\n========== USER 1 DASHBOARD ==========");
 
         user1.displayDashboard();
@@ -92,6 +94,5 @@ public class Main {
         System.out.println("\n========== USER 2 DASHBOARD ==========");
 
         user2.displayDashboard();
-
     }
 }
