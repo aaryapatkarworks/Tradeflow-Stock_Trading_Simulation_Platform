@@ -72,4 +72,9 @@ public class Portfolio {
             System.out.println("----------------------------");
         }
     }
+
+    int getTotalHoldings() {
+
+        return holdings.size();
+    }
 }

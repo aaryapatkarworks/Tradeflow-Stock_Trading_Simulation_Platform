@@ -169,4 +169,27 @@ public class User {
             transaction.displayTransaction();
         }
     }
+
+    void displayDashboard() {
+
+        System.out.println("\n=========================================");
+        System.out.println("          TRADEFLOW DASHBOARD");
+        System.out.println("=========================================");
+
+        System.out.println("User            : " + fullName);
+        System.out.printf("Wallet Balance  : ₹%.2f%n", walletBalance);
+
+        System.out.println("\nPortfolio Summary");
+        System.out.println("-----------------");
+
+        System.out.println("Total Holdings  : " + portfolio.getTotalHoldings());
+
+        portfolio.displayPortfolio();
+
+        System.out.println("\nRecent Transactions");
+
+        displayTransactionHistory();
+
+        System.out.println("=========================================");
+    }
 }
