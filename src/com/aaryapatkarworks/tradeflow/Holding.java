@@ -24,6 +24,22 @@ public class Holding {
         averagePrice = totalInvestment / quantity;
     }
 
+    boolean removeQuantity(int sellQuantity) {
+
+        if (sellQuantity > quantity) {
+            return false;
+        }
+
+        quantity -= sellQuantity;
+
+        return true;
+    }
+
+    boolean isEmpty() {
+
+        return quantity == 0;
+    }
+
     void displayHolding() {
 
         System.out.println("Stock      : " + stock.companyName);

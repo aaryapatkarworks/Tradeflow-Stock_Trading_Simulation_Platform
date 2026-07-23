@@ -89,6 +89,42 @@ public class User {
         System.out.println("===============================");
     }
 
+    void sellStock(Stock stock, int quantity) {
+
+        Holding holding = portfolio.getHolding(stock);
+
+        System.out.println("\n========== SELL ORDER ==========");
+
+        if (holding == null) {
+
+            System.out.println("You do not own this stock.");
+
+            return;
+        }
+
+        if (!holding.removeQuantity(quantity)) {
+
+            System.out.println("Insufficient quantity available.");
+
+            return;
+        }
+
+        double totalAmount = stock.currentPrice * quantity;
+
+        walletBalance += totalAmount;
+
+        if (holding.isEmpty()) {
+
+            portfolio.removeHolding(holding);
+        }
+
+        System.out.println("Order Status : SUCCESS");
+
+        System.out.printf("Amount Credited : ₹%.2f%n", totalAmount);
+
+        System.out.printf("Wallet Balance : ₹%.2f%n", walletBalance);
+    }
+
     void displayPortfolio() {
 
         System.out.println("\nPortfolio of " + fullName);

@@ -36,6 +36,24 @@ public class Portfolio {
         System.out.println("New holding added to portfolio.");
     }
 
+    Holding getHolding(Stock stock) {
+
+        for (Holding holding : holdings) {
+
+            if (holding.stock.stockSymbol.equals(stock.stockSymbol)) {
+
+                return holding;
+            }
+        }
+
+        return null;
+    }
+
+    void removeHolding(Holding holding) {
+
+        holdings.remove(holding);
+    }
+
     void displayPortfolio() {
 
         System.out.println("\n========== PORTFOLIO ==========\n");

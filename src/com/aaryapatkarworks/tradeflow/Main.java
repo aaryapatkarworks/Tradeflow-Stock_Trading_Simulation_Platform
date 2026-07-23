@@ -72,6 +72,12 @@ public class Main {
 
         user2.buyStock(stock2, 80);
 
+        System.out.println("\n========== SELL ORDERS ==========\n");
+
+        user1.sellStock(stock1, 3);
+
+        user2.sellStock(stock2, 10);
+
         System.out.println("\n========== FINAL USER DETAILS ==========\n");
 
         user1.displayUser();
