@@ -7,6 +7,12 @@ public class TradingService {
                   String symbol,
                   int quantity) {
 
+        if (quantity <= 0) {
+
+            System.out.println("Quantity must be greater than zero.");
+            return;
+        }
+
         Stock stock = market.findStock(symbol);
 
         if (stock == null) {
@@ -22,6 +28,12 @@ public class TradingService {
                    StockMarket market,
                    String symbol,
                    int quantity) {
+
+        if (quantity <= 0) {
+
+            System.out.println("Quantity must be greater than zero.");
+            return;
+        }
 
         Stock stock = market.findStock(symbol);
 
@@ -67,6 +79,12 @@ public class TradingService {
     void updateMarketPrice(StockMarket market,
                            String symbol,
                            double newPrice) {
+
+        if (newPrice <= 0) {
+
+            System.out.println("Invalid stock price.");
+            return;
+        }
 
         market.updateStockPrice(
                 symbol,
