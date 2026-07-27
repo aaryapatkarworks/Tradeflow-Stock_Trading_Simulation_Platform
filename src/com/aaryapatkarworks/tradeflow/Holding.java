@@ -47,4 +47,19 @@ public class Holding {
         System.out.println("Quantity   : " + quantity);
         System.out.printf("Avg Price  : ₹%.2f%n", averagePrice);
     }
+
+    double getInvestedAmount() {
+
+        return quantity * averagePrice;
+    }
+
+    double getCurrentValue() {
+
+        return quantity * stock.currentPrice;
+    }
+
+    double getProfitLoss() {
+
+        return getCurrentValue() - getInvestedAmount();
+    }
 }

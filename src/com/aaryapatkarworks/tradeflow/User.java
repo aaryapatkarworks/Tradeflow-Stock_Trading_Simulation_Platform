@@ -186,6 +186,23 @@ public class User {
 
         portfolio.displayPortfolio();
 
+        System.out.println("\n========== PORTFOLIO SUMMARY ==========");
+
+        System.out.printf(
+                "Invested Amount : ₹%.2f%n",
+                portfolio.getTotalInvestment()
+        );
+
+        System.out.printf(
+                "Current Value   : ₹%.2f%n",
+                portfolio.getCurrentValue()
+        );
+
+        System.out.printf(
+                "Profit / Loss   : ₹%.2f%n",
+                portfolio.getProfitLoss()
+        );
+
         System.out.println("\nRecent Transactions");
 
         displayTransactionHistory();

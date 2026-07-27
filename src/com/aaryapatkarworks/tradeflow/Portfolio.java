@@ -73,6 +73,35 @@ public class Portfolio {
         }
     }
 
+    double getTotalInvestment() {
+
+        double total = 0;
+
+        for (Holding holding : holdings) {
+
+            total += holding.getInvestedAmount();
+        }
+
+        return total;
+    }
+
+    double getCurrentValue() {
+
+        double total = 0;
+
+        for (Holding holding : holdings) {
+
+            total += holding.getCurrentValue();
+        }
+
+        return total;
+    }
+
+    double getProfitLoss() {
+
+        return getCurrentValue() - getTotalInvestment();
+    }
+
     int getTotalHoldings() {
 
         return holdings.size();
