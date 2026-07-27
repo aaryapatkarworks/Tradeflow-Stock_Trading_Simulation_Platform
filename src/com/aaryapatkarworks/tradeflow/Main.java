@@ -24,6 +24,9 @@ public class Main {
         // Create Stock Market
         StockMarket market = new StockMarket();
 
+        // Create Trading Service
+        TradingService tradingService = new TradingService();
+
         // Add Stocks to Market
         market.addStock(new Stock(
                 1,
@@ -66,17 +69,43 @@ public class Main {
         // Buy Orders
         System.out.println("\n========== BUY ORDERS ==========\n");
 
-        user1.buyStock(market.findStock("TCS"), 10);
-        user1.buyStock(market.findStock("TCS"), 5);
+        tradingService.buyStock(
+                user1,
+                market,
+                "TCS",
+                10
+        );
 
-        user2.buyStock(market.findStock("RELIANCE"), 80);
+        tradingService.buyStock(
+                user1,
+                market,
+                "TCS",
+                5
+        );
+
+        tradingService.buyStock(
+                user2,
+                market,
+                "RELIANCE",
+                80
+        );
 
         // Sell Orders
         System.out.println("\n========== SELL ORDERS ==========\n");
 
-        user1.sellStock(market.findStock("TCS"), 3);
+        tradingService.sellStock(
+                user1,
+                market,
+                "TCS",
+                3
+        );
 
-        user2.sellStock(market.findStock("RELIANCE"), 10);
+        tradingService.sellStock(
+                user2,
+                market,
+                "RELIANCE",
+                10
+        );
 
         // Final User Details
         System.out.println("\n========== FINAL USER DETAILS ==========\n");
