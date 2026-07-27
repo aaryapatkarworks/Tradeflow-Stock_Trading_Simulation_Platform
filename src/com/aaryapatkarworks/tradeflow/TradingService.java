@@ -34,4 +34,13 @@ public class TradingService {
         user.sellStock(stock, quantity);
     }
 
+    void updateMarketPrice(StockMarket market,
+                           String symbol,
+                           double newPrice) {
+
+        market.updateStockPrice(
+                symbol,
+                newPrice
+        );
+    }
 }

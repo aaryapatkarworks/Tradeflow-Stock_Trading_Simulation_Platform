@@ -107,6 +107,26 @@ public class Main {
                 10
         );
 
+        System.out.println("\n========== MARKET UPDATE ==========\n");
+
+        tradingService.updateMarketPrice(
+                market,
+                "TCS",
+                3650.75
+        );
+
+        tradingService.updateMarketPrice(
+                market,
+                "RELIANCE",
+                1555.20
+        );
+
+        tradingService.updateMarketPrice(
+                market,
+                "INFY",
+                1688.40
+        );
+
         // Final User Details
         System.out.println("\n========== FINAL USER DETAILS ==========\n");
 

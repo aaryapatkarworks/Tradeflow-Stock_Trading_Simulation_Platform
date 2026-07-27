@@ -27,4 +27,16 @@ public class Stock {
         System.out.printf("Price     : ₹%.2f%n", currentPrice);
         System.out.println("===========================");
     }
+
+    void updatePrice(double newPrice) {
+
+        System.out.printf(
+                "\n%s price updated from ₹%.2f to ₹%.2f%n",
+                stockSymbol,
+                currentPrice,
+                newPrice
+        );
+
+        currentPrice = newPrice;
+    }
 }

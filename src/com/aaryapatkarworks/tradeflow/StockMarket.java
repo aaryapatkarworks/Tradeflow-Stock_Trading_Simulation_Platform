@@ -39,4 +39,19 @@ public class StockMarket {
 
         return null;
     }
+
+    void updateStockPrice(String symbol,
+                          double newPrice) {
+
+        Stock stock = findStock(symbol);
+
+        if (stock == null) {
+
+            System.out.println("Stock not found.");
+
+            return;
+        }
+
+        stock.updatePrice(newPrice);
+    }
 }
