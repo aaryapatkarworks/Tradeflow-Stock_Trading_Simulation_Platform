@@ -89,43 +89,62 @@ public class Main {
         // Buy Orders
         System.out.println("\n========== BUY ORDERS ==========\n");
 
-        tradingService.buyStock(
-                user1,
-                market,
-                "TCS",
-                10
-        );
+        try {
 
-        tradingService.buyStock(
-                user1,
-                market,
-                "TCS",
-                5
-        );
+            tradingService.buyStock(
+                    user1,
+                    market,
+                    "TCS",
+                    10
+            );
 
-        tradingService.buyStock(
-                user2,
-                market,
-                "RELIANCE",
-                80
-        );
+            tradingService.buyStock(
+                    user1,
+                    market,
+                    "TCS",
+                    5
+            );
+
+
+            tradingService.buyStock(
+                    user2,
+                    market,
+                    "RELIANCE",
+                    80
+            );
+
+        }
+
+        catch (RuntimeException e) {
+
+            System.out.println(e.getMessage());
+        }
 
         // Sell Orders
         System.out.println("\n========== SELL ORDERS ==========\n");
 
-        tradingService.sellStock(
-                user1,
-                market,
-                "TCS",
-                3
-        );
+        try {
 
-        tradingService.sellStock(
-                user2,
-                market,
-                "RELIANCE",
-                10
-        );
+            tradingService.sellStock(
+                    user1,
+                    market,
+                    "TCS",
+                    3
+            );
+
+            tradingService.sellStock(
+                    user2,
+                    market,
+                    "RELIANCE",
+                    10
+            );
+
+        }
+
+        catch (RuntimeException e) {
+
+            System.out.println(e.getMessage());
+        }
 
         System.out.println("\n========== MARKET UPDATE ==========\n");
 

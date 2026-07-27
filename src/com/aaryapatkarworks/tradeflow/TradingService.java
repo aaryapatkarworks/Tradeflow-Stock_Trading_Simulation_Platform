@@ -1,4 +1,6 @@
 package com.aaryapatkarworks.tradeflow;
+import com.aaryapatkarworks.tradeflow.exceptions.InvalidQuantityException;
+import com.aaryapatkarworks.tradeflow.exceptions.StockNotFoundException;
 
 public class TradingService {
 
@@ -9,16 +11,14 @@ public class TradingService {
 
         if (quantity <= 0) {
 
-            System.out.println("Quantity must be greater than zero.");
-            return;
+            throw new InvalidQuantityException();
         }
 
         Stock stock = market.findStock(symbol);
 
         if (stock == null) {
 
-            System.out.println("Stock not found.");
-            return;
+            throw new StockNotFoundException(symbol);
         }
 
         user.buyStock(stock, quantity);
