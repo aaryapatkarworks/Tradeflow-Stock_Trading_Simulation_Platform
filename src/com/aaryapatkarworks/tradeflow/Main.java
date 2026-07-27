@@ -27,27 +27,7 @@ public class Main {
         // Create Trading Service
         TradingService tradingService = new TradingService();
 
-        // Add Stocks to Market
-        market.addStock(new Stock(
-                1,
-                "Tata Consultancy Services",
-                "TCS",
-                3520.50
-        ));
-
-        market.addStock(new Stock(
-                2,
-                "Reliance Industries",
-                "RELIANCE",
-                1498.75
-        ));
-
-        market.addStock(new Stock(
-                3,
-                "Infosys",
-                "INFY",
-                1624.80
-        ));
+        market.loadStocksFromCSV("stocks.csv");
 
         // Display Users
         System.out.println("========== USERS ==========\n");
