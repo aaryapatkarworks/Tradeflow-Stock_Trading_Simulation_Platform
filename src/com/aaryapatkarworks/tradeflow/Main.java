@@ -166,5 +166,13 @@ public class Main {
         user1.displayWatchlist();
 
         user2.displayWatchlist();
+
+        System.out.println("\n========== USER 1 REPORT ==========");
+
+        user1.generateTradeReport();
+
+        System.out.println("\n========== USER 2 REPORT ==========");
+
+        user2.generateTradeReport();
     }
 }

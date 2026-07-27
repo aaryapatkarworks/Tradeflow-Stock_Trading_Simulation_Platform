@@ -212,6 +212,66 @@ public class User {
         System.out.println("=========================================");
     }
 
+    void generateTradeReport() {
+
+        System.out.println("\n=================================");
+        System.out.println("        TRADE REPORT");
+        System.out.println("=================================");
+
+        System.out.println("User              : " + fullName);
+
+        System.out.printf(
+                "Wallet Balance    : ₹%.2f%n",
+                walletBalance
+        );
+
+        System.out.println("\nPortfolio Summary");
+        System.out.println("-------------------------");
+
+        System.out.println(
+                "Total Holdings    : "
+                        + portfolio.getTotalHoldings()
+        );
+
+        System.out.println(
+                "Transactions      : "
+                        + getTransactionCount()
+        );
+
+        System.out.println(
+                "Watchlist Stocks  : "
+                        + getWatchlistCount()
+        );
+
+        System.out.println("\nInvestment Summary");
+        System.out.println("-------------------------");
+
+        System.out.printf(
+                "Invested Amount   : ₹%.2f%n",
+                portfolio.getTotalInvestment()
+        );
+
+        System.out.printf(
+                "Current Value     : ₹%.2f%n",
+                portfolio.getCurrentValue()
+        );
+
+        System.out.printf(
+                "Profit / Loss     : ₹%.2f%n",
+                portfolio.getProfitLoss()
+        );
+
+        double netWorth =
+                walletBalance + portfolio.getCurrentValue();
+
+        System.out.printf(
+                "Net Worth         : ₹%.2f%n",
+                netWorth
+        );
+
+        System.out.println("=================================");
+    }
+
     void addToWatchlist(Stock stock) {
 
         if (watchlist.contains(stock)) {
@@ -253,5 +313,15 @@ public class User {
             stock.displayStock();
             System.out.println();
         }
+    }
+
+    int getTransactionCount() {
+
+        return transactions.size();
+    }
+
+    int getWatchlistCount() {
+
+        return watchlist.size();
     }
 }
