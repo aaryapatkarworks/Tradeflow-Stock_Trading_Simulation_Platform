@@ -12,6 +12,7 @@ public class User {
     Portfolio portfolio;
 
     ArrayList<Transaction> transactions;
+    ArrayList<Stock> watchlist;
 
     User(int userId,
          String fullName,
@@ -26,6 +27,7 @@ public class User {
         this.walletBalance = walletBalance;
         this.portfolio = new Portfolio();
         transactions = new ArrayList<>();
+        watchlist = new ArrayList<>();
     }
 
     void displayUser() {
@@ -208,5 +210,48 @@ public class User {
         displayTransactionHistory();
 
         System.out.println("=========================================");
+    }
+
+    void addToWatchlist(Stock stock) {
+
+        if (watchlist.contains(stock)) {
+
+            System.out.println(stock.stockSymbol + " is already in your watchlist.");
+            return;
+        }
+
+        watchlist.add(stock);
+
+        System.out.println(stock.stockSymbol + " added to watchlist.");
+    }
+
+    void removeFromWatchlist(Stock stock) {
+
+        if (watchlist.remove(stock)) {
+
+            System.out.println(stock.stockSymbol + " removed from watchlist.");
+        }
+
+        else {
+
+            System.out.println(stock.stockSymbol + " is not in your watchlist.");
+        }
+    }
+
+    void displayWatchlist() {
+
+        System.out.println("\n========== WATCHLIST ==========\n");
+
+        if (watchlist.isEmpty()) {
+
+            System.out.println("Watchlist is empty.");
+            return;
+        }
+
+        for (Stock stock : watchlist) {
+
+            stock.displayStock();
+            System.out.println();
+        }
     }
 }

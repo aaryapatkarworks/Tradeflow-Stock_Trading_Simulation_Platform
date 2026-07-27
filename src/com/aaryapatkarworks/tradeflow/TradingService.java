@@ -34,6 +34,36 @@ public class TradingService {
         user.sellStock(stock, quantity);
     }
 
+    void addToWatchlist(User user,
+                        StockMarket market,
+                        String symbol) {
+
+        Stock stock = market.findStock(symbol);
+
+        if (stock == null) {
+
+            System.out.println("Stock not found.");
+            return;
+        }
+
+        user.addToWatchlist(stock);
+    }
+
+    void removeFromWatchlist(User user,
+                             StockMarket market,
+                             String symbol) {
+
+        Stock stock = market.findStock(symbol);
+
+        if (stock == null) {
+
+            System.out.println("Stock not found.");
+            return;
+        }
+
+        user.removeFromWatchlist(stock);
+    }
+
     void updateMarketPrice(StockMarket market,
                            String symbol,
                            double newPrice) {

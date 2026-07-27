@@ -66,6 +66,26 @@ public class Main {
         user2.deposit(90000);
         user1.withdraw(10500);
 
+        System.out.println("\n========== WATCHLIST ==========\n");
+
+        tradingService.addToWatchlist(
+                user1,
+                market,
+                "TCS"
+        );
+
+        tradingService.addToWatchlist(
+                user1,
+                market,
+                "INFY"
+        );
+
+        tradingService.addToWatchlist(
+                user2,
+                market,
+                "RELIANCE"
+        );
+
         // Buy Orders
         System.out.println("\n========== BUY ORDERS ==========\n");
 
@@ -143,5 +163,9 @@ public class Main {
         System.out.println("\n========== USER 2 DASHBOARD ==========");
 
         user2.displayDashboard();
+
+        user1.displayWatchlist();
+
+        user2.displayWatchlist();
     }
 }
