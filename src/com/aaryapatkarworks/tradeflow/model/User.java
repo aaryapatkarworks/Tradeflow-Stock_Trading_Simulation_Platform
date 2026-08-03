@@ -14,6 +14,7 @@ public class User {
 
     private ArrayList<Transaction> transactions;
     private ArrayList<Stock> watchlist;
+    private ArrayList<Order> orders;
 
     public User(int userId,
                 String fullName,
@@ -27,8 +28,8 @@ public class User {
         this.password = password;
         this.walletBalance = walletBalance;
 
-        portfolio = new Portfolio();
         transactions = new ArrayList<>();
+        orders = new ArrayList<>();
         watchlist = new ArrayList<>();
     }
 
@@ -390,6 +391,16 @@ public class User {
                 email,
                 walletBalance
         );
+    }
+
+    public void addOrder(Order order) {
+
+        orders.add(order);
+    }
+
+    public ArrayList<Order> getOrders() {
+
+        return orders;
     }
 
 }

@@ -9,6 +9,7 @@ import com.aaryapatkarworks.tradeflow.model.User;
 import com.aaryapatkarworks.tradeflow.service.StockMarket;
 import com.aaryapatkarworks.tradeflow.service.TradingService;
 import com.aaryapatkarworks.tradeflow.service.UserService;
+import com.aaryapatkarworks.tradeflow.service.OrderService;
 
 public class Main {
 
@@ -20,6 +21,9 @@ public class Main {
 
     private static final TradingService tradingService =
             new TradingService(market);
+
+    private static final OrderService orderService =
+            new OrderService(tradingService);
 
     private static final UserService userService =
             new UserService();
@@ -219,8 +223,9 @@ public class Main {
             System.out.println("6. Dashboard");
             System.out.println("7. Watchlist");
             System.out.println("8. Transaction History");
-            System.out.println("9. Trade Report");
-            System.out.println("10. Admin Panel");
+            System.out.println("9. Order History");
+            System.out.println("10. Trade Report");
+            System.out.println("11. Admin Panel");
             System.out.println("0. Logout");
 
             System.out.print("\nEnter Choice : ");
@@ -272,12 +277,20 @@ public class Main {
 
                 case 9:
 
-                    tradingService.generateTradeReport(currentUser);
+                    orderService.displayOrders(currentUser);
+
                     break;
 
                 case 10:
 
+                    tradingService.generateTradeReport(currentUser);
+
+                    break;
+
+                case 11:
+
                     adminMenu();
+
                     break;
 
                 case 0:
@@ -360,9 +373,9 @@ public class Main {
 
         try {
 
-            tradingService.buyStock(
+            orderService.placeBuyOrder(
                     currentUser,
-                    symbol,
+                    market.findStock(symbol),
                     quantity
             );
 
@@ -391,9 +404,9 @@ public class Main {
 
         try {
 
-            tradingService.sellStock(
+            orderService.placeSellOrder(
                     currentUser,
-                    symbol,
+                    market.findStock(symbol),
                     quantity
             );
 
@@ -619,11 +632,23 @@ public class Main {
 
         try {
 
-            tradingService.buyStock(user1, "TCS", 10);
+            orderService.placeBuyOrder(
+                    user1,
+                    market.findStock("TCS"),
+                    10
+            );
 
-            tradingService.buyStock(user1, "TCS", 5);
+            orderService.placeBuyOrder(
+                    user1,
+                    market.findStock("TCS"),
+                    5
+            );
 
-            tradingService.buyStock(user2, "RELIANCE", 20);
+            orderService.placeBuyOrder(
+                    user2,
+                    market.findStock("RELIANCE"),
+                    20
+            );
 
         }
 
@@ -636,9 +661,17 @@ public class Main {
 
         try {
 
-            tradingService.sellStock(user1, "TCS", 3);
+            orderService.placeSellOrder(
+                    user1,
+                    market.findStock("TCS"),
+                    3
+            );
 
-            tradingService.sellStock(user2, "RELIANCE", 5);
+            orderService.placeSellOrder(
+                    user2,
+                    market.findStock("RELIANCE"),
+                    5
+            );
 
         }
 
