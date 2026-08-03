@@ -8,6 +8,7 @@ import com.aaryapatkarworks.tradeflow.exception.StockNotFoundException;
 import com.aaryapatkarworks.tradeflow.model.User;
 import com.aaryapatkarworks.tradeflow.service.StockMarket;
 import com.aaryapatkarworks.tradeflow.service.TradingService;
+import com.aaryapatkarworks.tradeflow.service.UserService;
 
 public class Main {
 
@@ -20,10 +21,14 @@ public class Main {
     private static final TradingService tradingService =
             new TradingService(market);
 
-    private static User user1;
-    private static User user2;
+    private static final UserService userService =
+            new UserService();
 
     private static User currentUser;
+
+    private static boolean loggedIn = false;
+
+    private static long loginTime;
 
     // ---------------- Main ----------------
 
@@ -38,20 +43,26 @@ public class Main {
 
     private static void initialize() {
 
-        user1 = new User(
-                101,
-                "Aarya Patkar",
-                "aarya210@gmail.com",
-                "password21",
-                150000
+        userService.registerUser(
+
+                new User(
+                        101,
+                        "Aarya Patkar",
+                        "aarya210@gmail.com",
+                        "password21",
+                        150000
+                )
         );
 
-        user2 = new User(
-                102,
-                "Pranav More",
-                "pranav007@gmail.com",
-                "password10",
-                100000
+        userService.registerUser(
+
+                new User(
+                        102,
+                        "Pranav More",
+                        "pranav007@gmail.com",
+                        "password10",
+                        100000
+                )
         );
 
         market.loadStocksFromCSV("stocks.csv");
@@ -69,8 +80,9 @@ public class Main {
             System.out.println("        TRADEFLOW STOCK EXCHANGE");
             System.out.println("==========================================");
 
-            System.out.println("1. Run Demo");
+            System.out.println("1. Register New User");
             System.out.println("2. Login");
+            System.out.println("3. Run Demo");
             System.out.println("0. Exit");
 
             System.out.print("\nEnter Choice : ");
@@ -82,7 +94,7 @@ public class Main {
 
                 case 1:
 
-                    runDemo();
+                    registerUser();
 
                     break;
 
@@ -94,15 +106,15 @@ public class Main {
 
                     break;
 
-                case 0:
+                case 3:
 
-                    System.out.println("\nThank you for using TradeFlow!");
+                    runDemo();
 
                     break;
 
                 default:
 
-                    System.out.println("\nInvalid Choice.");
+                    System.out.println("\nExit.");
             }
 
         } while (choice != 0);
@@ -122,33 +134,69 @@ public class Main {
             System.out.print("Password : ");
             String password = sc.nextLine();
 
-            if (email.equalsIgnoreCase("aarya210@gmail.com")
-                    && password.equals("password21")) {
+            currentUser = userService.login(email, password);
 
-                currentUser = user1;
+            if (currentUser != null) {
 
-                System.out.println("\nWelcome " +
-                        currentUser.getFullName() + "!");
-
-                break;
-            }
-
-            else if (email.equalsIgnoreCase("pranav007@gmail.com")
-                    && password.equals("password10")) {
-
-                currentUser = user2;
-
-                System.out.println("\nWelcome " +
-                        currentUser.getFullName() + "!");
+                System.out.println(
+                        "\nWelcome "
+                                + currentUser.getFullName()
+                                + "!"
+                );
 
                 break;
             }
 
-            else {
-
-                System.out.println("\nInvalid Email or Password!");
-            }
+            System.out.println(
+                    "\nInvalid Email or Password!"
+            );
         }
+    }
+
+    private static void registerUser() {
+
+        System.out.println("\n========== REGISTER USER ==========\n");
+
+        System.out.print("User ID : ");
+        int id = sc.nextInt();
+        sc.nextLine();
+        if (userService.userIdExists(id)) {
+
+            System.out.println("\nUser ID already exists.");
+
+            return;
+        }
+
+        System.out.print("Full Name : ");
+        String name = sc.nextLine();
+
+        System.out.print("Email : ");
+        String email = sc.nextLine();
+        if (userService.emailExists(email)) {
+
+            System.out.println("\nEmail already registered.");
+
+            return;
+        }
+
+        System.out.print("Password : ");
+        String password = sc.nextLine();
+
+        System.out.print("Initial Wallet Balance : ₹");
+        double wallet = sc.nextDouble();
+        sc.nextLine();
+
+        User user = new User(
+                id,
+                name,
+                email,
+                password,
+                wallet
+        );
+
+        userService.registerUser(user);
+
+        System.out.println("\nUser Registered Successfully!");
     }
 
     // ---------------- Main Menu ----------------
@@ -453,6 +501,8 @@ public class Main {
 
             System.out.println("1. Display Market");
             System.out.println("2. Update Stock Price");
+            System.out.println("3. View All Users");
+            System.out.println("4. Total Registered Users");
             System.out.println("0. Back");
 
             System.out.print("\nEnter Choice : ");
@@ -497,6 +547,21 @@ public class Main {
 
                     break;
 
+                case 3:
+
+                    userService.displayUsers();
+
+                    break;
+
+                case 4:
+
+                    System.out.println(
+                            "\nTotal Registered Users : "
+                                    + userService.getUsers().size()
+                    );
+
+                    break;
+
                 case 0:
 
                     break;
@@ -512,6 +577,10 @@ public class Main {
     // ---------------- Demo ----------------
 
     private static void runDemo() {
+
+        User user1 = userService.getUsers().get(0);
+
+        User user2 = userService.getUsers().get(1);
 
         System.out.println("\n========== USERS ==========\n");
 

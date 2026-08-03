@@ -34,15 +34,33 @@ public class User {
 
     // ---------------- Getters ----------------
 
+    public int getUserId() {
+
+        return userId;
+    }
+
     public String getFullName() {
+
         return fullName;
     }
 
+    public String getEmail() {
+
+        return email;
+    }
+
+    public String getPassword() {
+
+        return password;
+    }
+
     public double getWalletBalance() {
+
         return walletBalance;
     }
 
     public Portfolio getPortfolio() {
+
         return portfolio;
     }
 
@@ -362,4 +380,16 @@ public class User {
 
         return watchlist.size();
     }
+
+    public String getUserSummary() {
+
+        return String.format(
+                "%d | %s | %s | ₹%.2f",
+                userId,
+                fullName,
+                email,
+                walletBalance
+        );
+    }
+
 }
