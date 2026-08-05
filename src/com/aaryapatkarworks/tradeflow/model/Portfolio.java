@@ -111,4 +111,9 @@ public class Portfolio {
             System.out.println();
         }
     }
+    
+    public ArrayList<Holding> getHoldings() {
+
+        return holdings;
+    }
 }

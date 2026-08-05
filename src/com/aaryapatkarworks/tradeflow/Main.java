@@ -11,6 +11,7 @@ import com.aaryapatkarworks.tradeflow.service.TradingService;
 import com.aaryapatkarworks.tradeflow.service.UserService;
 import com.aaryapatkarworks.tradeflow.service.OrderService;
 import com.aaryapatkarworks.tradeflow.service.MarketSimulationService;
+import com.aaryapatkarworks.tradeflow.service.PortfolioAnalyticsService;
 
 public class Main {
 
@@ -32,6 +33,10 @@ public class Main {
     private static final MarketSimulationService
             marketSimulationService =
             new MarketSimulationService(market);
+
+    private static final PortfolioAnalyticsService
+            portfolioAnalyticsService =
+            new PortfolioAnalyticsService();
 
     private static User currentUser;
 
@@ -290,6 +295,10 @@ public class Main {
                 case 10:
 
                     tradingService.generateTradeReport(currentUser);
+
+                    portfolioAnalyticsService.displayAnalytics(
+                            currentUser.getPortfolio()
+                    );
 
                     break;
 
