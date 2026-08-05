@@ -10,6 +10,7 @@ import com.aaryapatkarworks.tradeflow.service.StockMarket;
 import com.aaryapatkarworks.tradeflow.service.TradingService;
 import com.aaryapatkarworks.tradeflow.service.UserService;
 import com.aaryapatkarworks.tradeflow.service.OrderService;
+import com.aaryapatkarworks.tradeflow.service.MarketSimulationService;
 
 public class Main {
 
@@ -27,6 +28,10 @@ public class Main {
 
     private static final UserService userService =
             new UserService();
+
+    private static final MarketSimulationService
+            marketSimulationService =
+            new MarketSimulationService(market);
 
     private static User currentUser;
 
@@ -226,6 +231,7 @@ public class Main {
             System.out.println("9. Order History");
             System.out.println("10. Trade Report");
             System.out.println("11. Admin Panel");
+            System.out.println("12. View Live Market");
             System.out.println("0. Logout");
 
             System.out.print("\nEnter Choice : ");
@@ -290,6 +296,14 @@ public class Main {
                 case 11:
 
                     adminMenu();
+
+                    break;
+
+                case 12:
+
+                    marketSimulationService.simulateMarket();
+
+                    tradingService.displayMarket();
 
                     break;
 
@@ -379,6 +393,12 @@ public class Main {
                     quantity
             );
 
+            marketSimulationService.simulateMarket();
+
+            System.out.println("\nUpdated Portfolio:");
+
+            tradingService.displayPortfolio(currentUser);
+
         }
 
         catch (StockNotFoundException |
@@ -409,6 +429,12 @@ public class Main {
                     market.findStock(symbol),
                     quantity
             );
+
+            marketSimulationService.simulateMarket();
+
+            System.out.println("\nUpdated Portfolio:");
+
+            tradingService.displayPortfolio(currentUser);
 
         }
 
