@@ -28,6 +28,8 @@ public class User {
         this.password = password;
         this.walletBalance = walletBalance;
 
+        portfolio = new Portfolio();
+
         transactions = new ArrayList<>();
         orders = new ArrayList<>();
         watchlist = new ArrayList<>();
