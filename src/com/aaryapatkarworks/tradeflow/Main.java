@@ -12,6 +12,7 @@ import com.aaryapatkarworks.tradeflow.service.UserService;
 import com.aaryapatkarworks.tradeflow.service.OrderService;
 import com.aaryapatkarworks.tradeflow.service.MarketSimulationService;
 import com.aaryapatkarworks.tradeflow.service.PortfolioAnalyticsService;
+import com.aaryapatkarworks.tradeflow.service.MarketAnalyticsService;
 
 public class Main {
 
@@ -33,6 +34,10 @@ public class Main {
     private static final MarketSimulationService
             marketSimulationService =
             new MarketSimulationService(market);
+
+    private static final MarketAnalyticsService
+            marketAnalyticsService =
+            new MarketAnalyticsService(market);
 
     private static final PortfolioAnalyticsService
             portfolioAnalyticsService =
@@ -237,6 +242,7 @@ public class Main {
             System.out.println("10. Trade Report");
             System.out.println("11. Admin Panel");
             System.out.println("12. View Live Market");
+            System.out.println("13. Market Analytics");
             System.out.println("0. Logout");
 
             System.out.print("\nEnter Choice : ");
@@ -313,6 +319,12 @@ public class Main {
                     marketSimulationService.simulateMarket();
 
                     tradingService.displayMarket();
+
+                    break;
+
+                case 13:
+
+                    marketAnalyticsService.displayMarketAnalytics();
 
                     break;
 

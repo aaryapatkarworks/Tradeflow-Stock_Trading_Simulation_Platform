@@ -6,6 +6,9 @@ public class Stock {
     private String companyName;
     private String stockSymbol;
     private double currentPrice;
+    private double previousPrice;
+    private double priceChange;
+    private double priceChangePercentage;
 
     public Stock(int stockId,
                  String companyName,
@@ -16,6 +19,9 @@ public class Stock {
         this.companyName = companyName;
         this.stockSymbol = stockSymbol;
         this.currentPrice = currentPrice;
+        this.previousPrice = currentPrice;
+        this.priceChange = 0;
+        this.priceChangePercentage = 0;
     }
 
     // ---------------- Getters ----------------
@@ -36,18 +42,48 @@ public class Stock {
         return currentPrice;
     }
 
+    public double getPreviousPrice() {
+
+        return previousPrice;
+    }
+
+    public double getPriceChange() {
+
+        return priceChange;
+    }
+
+    public double getPriceChangePercentage() {
+
+        return priceChangePercentage;
+    }
+
     // ---------------- Business Methods ----------------
 
     public void updatePrice(double newPrice) {
 
+        previousPrice = currentPrice;
+
+        currentPrice = newPrice;
+
+        priceChange =
+                currentPrice - previousPrice;
+
+        if (previousPrice != 0) {
+
+            priceChangePercentage =
+                    (priceChange / previousPrice) * 100;
+
+        } else {
+
+            priceChangePercentage = 0;
+        }
+
         System.out.printf(
                 "\n%s price updated from ₹%.2f to ₹%.2f%n",
                 stockSymbol,
-                currentPrice,
-                newPrice
+                previousPrice,
+                currentPrice
         );
-
-        currentPrice = newPrice;
     }
 
     public void displayStock() {
