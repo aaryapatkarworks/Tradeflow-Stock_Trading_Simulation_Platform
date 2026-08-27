@@ -14,6 +14,7 @@ import com.aaryapatkarworks.tradeflow.service.MarketSimulationService;
 import com.aaryapatkarworks.tradeflow.service.PortfolioAnalyticsService;
 import com.aaryapatkarworks.tradeflow.service.MarketAnalyticsService;
 import com.aaryapatkarworks.tradeflow.service.MarketHistoryService;
+import com.aaryapatkarworks.tradeflow.service.TradingAnalyticsService;
 
 public class Main {
 
@@ -43,6 +44,10 @@ public class Main {
     private static final MarketHistoryService
             marketHistoryService =
             new MarketHistoryService(market);
+
+    private static final TradingAnalyticsService
+            tradingAnalyticsService =
+            new TradingAnalyticsService();
 
     private static final PortfolioAnalyticsService
             portfolioAnalyticsService =
@@ -249,6 +254,7 @@ public class Main {
             System.out.println("12. View Live Market");
             System.out.println("13. Market Analytics");
             System.out.println("14. Price History");
+            System.out.println("15. Trading Analytics");
             System.out.println("0. Logout");
 
             System.out.print("\nEnter Choice : ");
@@ -345,6 +351,14 @@ public class Main {
 
                     marketHistoryService.displayPriceHistory(
                             historySymbol
+                    );
+
+                    break;
+
+                case 15:
+
+                    tradingAnalyticsService.displayTradingAnalytics(
+                            currentUser
                     );
 
                     break;
