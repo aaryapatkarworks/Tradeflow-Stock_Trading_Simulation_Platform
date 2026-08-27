@@ -13,6 +13,7 @@ import com.aaryapatkarworks.tradeflow.service.OrderService;
 import com.aaryapatkarworks.tradeflow.service.MarketSimulationService;
 import com.aaryapatkarworks.tradeflow.service.PortfolioAnalyticsService;
 import com.aaryapatkarworks.tradeflow.service.MarketAnalyticsService;
+import com.aaryapatkarworks.tradeflow.service.MarketHistoryService;
 
 public class Main {
 
@@ -38,6 +39,10 @@ public class Main {
     private static final MarketAnalyticsService
             marketAnalyticsService =
             new MarketAnalyticsService(market);
+
+    private static final MarketHistoryService
+            marketHistoryService =
+            new MarketHistoryService(market);
 
     private static final PortfolioAnalyticsService
             portfolioAnalyticsService =
@@ -243,6 +248,7 @@ public class Main {
             System.out.println("11. Admin Panel");
             System.out.println("12. View Live Market");
             System.out.println("13. Market Analytics");
+            System.out.println("14. Price History");
             System.out.println("0. Logout");
 
             System.out.print("\nEnter Choice : ");
@@ -325,6 +331,21 @@ public class Main {
                 case 13:
 
                     marketAnalyticsService.displayMarketAnalytics();
+
+                    break;
+
+                case 14:
+
+                    System.out.print(
+                            "Enter stock symbol: "
+                    );
+
+                    String historySymbol =
+                            sc.nextLine();
+
+                    marketHistoryService.displayPriceHistory(
+                            historySymbol
+                    );
 
                     break;
 

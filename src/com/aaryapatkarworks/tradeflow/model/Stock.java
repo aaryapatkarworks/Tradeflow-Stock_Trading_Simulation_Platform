@@ -1,4 +1,6 @@
 package com.aaryapatkarworks.tradeflow.model;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class Stock {
 
@@ -6,9 +8,12 @@ public class Stock {
     private String companyName;
     private String stockSymbol;
     private double currentPrice;
+
     private double previousPrice;
     private double priceChange;
     private double priceChangePercentage;
+
+    private ArrayList<PriceRecord> priceHistory;
 
     public Stock(int stockId,
                  String companyName,
@@ -22,6 +27,15 @@ public class Stock {
         this.previousPrice = currentPrice;
         this.priceChange = 0;
         this.priceChangePercentage = 0;
+
+        priceHistory = new ArrayList<>();
+
+        priceHistory.add(
+                new PriceRecord(
+                        currentPrice,
+                        LocalDateTime.now()
+                )
+        );
     }
 
     // ---------------- Getters ----------------
@@ -55,6 +69,11 @@ public class Stock {
     public double getPriceChangePercentage() {
 
         return priceChangePercentage;
+    }
+
+    public ArrayList<PriceRecord> getPriceHistory() {
+
+        return priceHistory;
     }
 
     // ---------------- Business Methods ----------------
