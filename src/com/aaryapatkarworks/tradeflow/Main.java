@@ -15,6 +15,7 @@ import com.aaryapatkarworks.tradeflow.service.PortfolioAnalyticsService;
 import com.aaryapatkarworks.tradeflow.service.MarketAnalyticsService;
 import com.aaryapatkarworks.tradeflow.service.MarketHistoryService;
 import com.aaryapatkarworks.tradeflow.service.TradingAnalyticsService;
+import com.aaryapatkarworks.tradeflow.service.PortfolioRiskService;
 
 public class Main {
 
@@ -52,6 +53,9 @@ public class Main {
     private static final PortfolioAnalyticsService
             portfolioAnalyticsService =
             new PortfolioAnalyticsService();
+
+    private static final PortfolioRiskService portfolioRiskService =
+            new PortfolioRiskService();
 
     private static User currentUser;
 
@@ -255,6 +259,7 @@ public class Main {
             System.out.println("13. Market Analytics");
             System.out.println("14. Price History");
             System.out.println("15. Trading Analytics");
+            System.out.println("16. Portfolio Risk Analysis");
             System.out.println("0. Logout");
 
             System.out.print("\nEnter Choice : ");
@@ -361,6 +366,12 @@ public class Main {
                             currentUser
                     );
 
+                    break;
+
+                case 16:
+                    portfolioRiskService.displayRiskAnalysis(
+                            currentUser.getPortfolio()
+                    );
                     break;
 
                 case 0:
